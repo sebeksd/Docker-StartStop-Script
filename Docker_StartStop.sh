@@ -7,26 +7,14 @@
 # Used naming scheme:
 # cNAME - const, vName - variable, vNAME - all caps variable for "Text" (multiline) 
 
-for arg in "$@" 
-do
-  case "$arg" in
-    -restart) restart;; # restart previously stopped containers
-    -stop) stop;; # stop running containers and put them on the list
-    -h | --help)
-      showHelp  
-      exit 0
-      ;;
-  esac
-done;
-
 showHelp()
 {
   echo "
 Script to stop running containers and then start them without starting containers that were already stopped.
   
 Additional options are:
-  -stop - will stop running containers and save them to a list
-  -restart - will start containers previously stopped by this script
+  -s, --stop - will stop running containers and save them to a list
+  -r, --restart - will start containers previously stopped by this script
   -h, --help - show this help
 "
   exit 1
@@ -56,3 +44,15 @@ function stop()
     echo "No running containers, skipping"
   fi  
 }
+
+for arg in "$@" 
+do
+  case "$arg" in
+    -r | --restart) restart;; # restart previously stopped containers
+    -s | --stop) stop;; # stop running containers and put them on the list
+    -h | --help)
+      showHelp  
+      exit 0
+      ;;
+  esac
+done;
