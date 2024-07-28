@@ -10,10 +10,9 @@ Example situation to use this script is when we want to create backup of files a
 after backup is complete we want to start same containers without containers that were stopped before.
 
 ## Additional options ##
- -stop - will stop running containers and save them to a list
- -restart - will start containers previously stopped by this script
+ -stop - will stop running containers and save them to a list\
+ -restart - will start containers previously stopped by this script\
  -h, --help - show help
-
 
 ## Donation ##
 If you like this and you think it is worth of your money or you just have to much money, feel free to donate to my Bitcoin Address :)
