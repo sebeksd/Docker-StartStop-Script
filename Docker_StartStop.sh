@@ -24,8 +24,8 @@ function restart()
 {
   echo "Restarting all preciously stopped containers"
 
-  docker start $(cat /tmp/Docker_StartStop-runnig_list.tmp) &&\
-    rm /tmp/Docker_StartStop-runnig_list.tmp
+  docker start $(cat /tmp/Docker_StartStop-running_list.tmp) &&\
+    rm /tmp/Docker_StartStop-running_list.tmp
 
   echo "All containers restarted"
 }
@@ -38,7 +38,7 @@ function stop()
   # in case someone used stop more than once
   if [ "$(docker ps -aq -f status=running -f status=restarting)" ]; then
     # save list
-    docker stop $(docker ps -q) > /tmp/Docker_StartStop-runnig_list.tmp
+    docker stop $(docker ps -q) > /tmp/Docker_StartStop-running_list.tmp
     echo "All containers stopped"
   else
     echo "No running containers, skipping"
